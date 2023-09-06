@@ -43,3 +43,27 @@ def insert_accessrecords(request):
         return render (request,'display_accessrecords.html',d1)
     return render(request,'insert_access-records.html',d)
 
+def select_and_display(request):
+    WTO=Topic.objects.all()
+    d={'WTO':WTO}
+    if request.method=='POST':
+        tnlist=request.POST.getlist('tn')
+        QSWO=webpage.objects.none()
+        for tn in tnlist:
+            QSWO=QSWO|webpage.objects.filter(topic_name=tn)
+
+        d1={'QSWO':QSWO}
+        return render(request,'display_webpage.html',d1)
+    return render(request,'select_and_display.html',d)   
+
+def checkbox(request):
+    WTO=Topic.objects.all()
+    d={'WTO':WTO}
+
+    return render(request,'checkbox.html',d)
+
+def radiobutton(request):
+    WTO=Topic.objects.all()
+    d={'WTO':WTO}
+
+    return render(request,'radiobutton.html',d)

@@ -19,3 +19,5 @@ class Access_Records(models.Model):
     author=models.CharField(max_length=100)
     def __str__(self):
         return self.author
+    
+    
